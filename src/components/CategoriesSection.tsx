@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import categoryTshirts from "@/assets/category-tshirts.jpg";
 import categoryHoodies from "@/assets/category-hoodies.jpg";
 import categoryPants from "@/assets/category-pants.jpg";
+import categoryAccessories from "@/assets/category-accessories.jpg";
 
 const categories = [
   { title: "T-Shirts", image: categoryTshirts, link: "/#products" },
   { title: "Hoodies", image: categoryHoodies, link: "/#products" },
   { title: "Pants", image: categoryPants, link: "/#products" },
+  { title: "Accessories", image: categoryAccessories, link: "/#products" },
 ];
 
 export const CategoriesSection = () => {
@@ -19,7 +21,7 @@ export const CategoriesSection = () => {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.map((cat) => (
           <Link key={cat.title} to={cat.link} className="group relative aspect-[3/4] overflow-hidden block">
             <img
@@ -32,11 +34,11 @@ export const CategoriesSection = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6">
-              <h3 className="font-display text-2xl font-bold uppercase tracking-wider text-foreground">
+              <h3 className="font-display text-xl md:text-2xl font-bold uppercase tracking-wider text-foreground">
                 {cat.title}
               </h3>
               <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mt-2 group-hover:text-accent transition-colors duration-300">
-                Shop Now →
+                View Collection →
               </p>
             </div>
           </Link>

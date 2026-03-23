@@ -9,18 +9,18 @@ export const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="font-display text-xl font-bold tracking-[0.3em] uppercase text-foreground">
-          BLACKOUT
+        <Link to="/" className="font-display text-2xl font-black tracking-[0.4em] uppercase text-foreground">
+          LEVN
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          <Link to="/" className="text-sm tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300">
+          <Link to="/#products" className="text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300">
             Shop
           </Link>
-          <Link to="/#collections" className="text-sm tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300">
+          <Link to="/#collections" className="text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300">
             Collections
           </Link>
-          <Link to="/#about" className="text-sm tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300">
+          <Link to="/#about" className="text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300">
             About
           </Link>
         </div>
@@ -39,9 +39,9 @@ export const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-            <Link to="/" onClick={() => setIsOpen(false)} className="text-sm tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Shop</Link>
-            <Link to="/#collections" onClick={() => setIsOpen(false)} className="text-sm tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Collections</Link>
-            <Link to="/#about" onClick={() => setIsOpen(false)} className="text-sm tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">About</Link>
+            <Link to="/#products" onClick={() => setIsOpen(false)} className="text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-foreground transition-colors">Shop</Link>
+            <Link to="/#collections" onClick={() => setIsOpen(false)} className="text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-foreground transition-colors">Collections</Link>
+            <Link to="/#about" onClick={() => setIsOpen(false)} className="text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-foreground transition-colors">About</Link>
           </div>
         </div>
       )}
