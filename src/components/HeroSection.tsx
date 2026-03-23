@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-model.jpg";
+import levnLogo from "@/assets/levn-logo.png";
 
 export const HeroSection = () => {
   return (
@@ -17,9 +18,7 @@ export const HeroSection = () => {
 
       <div className="relative h-full flex flex-col justify-end pb-20 md:pb-32 container mx-auto px-6">
         <div className="max-w-2xl">
-          <p className="font-body text-xs tracking-[0.5em] uppercase text-accent mb-4 fade-in-up">
-            Limited Edition
-          </p>
+          <img src={levnLogo} alt="LEVN" className="h-16 md:h-20 w-auto mb-6 fade-in-up" />
           <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-black uppercase leading-[0.85] tracking-tight text-foreground fade-in-up fade-in-up-delay-1">
             NEW<br />DROP
           </h1>

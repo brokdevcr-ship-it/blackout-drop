@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import levnLogo from "@/assets/levn-logo.png";
 
 export const Footer = () => {
   return (
@@ -6,7 +7,7 @@ export const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
-            <h3 className="font-display text-xl font-bold tracking-[0.3em] uppercase text-foreground">BLACKOUT</h3>
+            <Link to="/"><img src={levnLogo} alt="LEVN" className="h-8 w-auto" /></Link>
             <p className="font-body text-sm text-muted-foreground mt-3 max-w-xs">
               Premium streetwear for the future generation.
             </p>
