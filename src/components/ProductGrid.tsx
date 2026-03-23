@@ -97,7 +97,7 @@ export const ProductGrid = () => {
                   <button
                     onClick={(e) => handleAddToCart(e, product)}
                     disabled={isCartLoading}
-                    className="absolute bottom-0 left-0 right-0 bg-primary text-primary-foreground font-display text-xs tracking-widest uppercase py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                    className="absolute bottom-0 left-0 right-0 bg-foreground text-background font-display text-xs tracking-[0.2em] uppercase py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
                   >
                     Add to Cart
                   </button>
