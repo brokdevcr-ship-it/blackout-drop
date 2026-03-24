@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { storefrontApiRequest, PRODUCT_BY_HANDLE_QUERY } from "@/lib/shopify";
+import { getMockProductByHandle } from "@/lib/mockProducts";
 import { useCartStore } from "@/stores/cartStore";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { Layout } from "@/components/Layout";
 import { Loader2, ArrowLeft, ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
 
@@ -39,12 +39,23 @@ const ProductDetail = () => {
             defaults[opt.name] = opt.values[0];
           });
           setSelectedOptions(defaults);
+          setLoading(false);
+          return;
         }
       } catch (error) {
         console.error('Failed to fetch product:', error);
-      } finally {
-        setLoading(false);
       }
+
+      // Shopify returned nothing — check the local mock catalog
+      const mock = getMockProductByHandle(handle ?? '');
+      if (mock) {
+        setProduct(mock.node);
+        const defaults: Record<string, string> = {};
+        mock.node.options.forEach((opt) => { defaults[opt.name] = opt.values[0]; });
+        setSelectedOptions(defaults);
+      }
+
+      setLoading(false);
     };
     fetchProduct();
   }, [handle]);
@@ -73,24 +84,22 @@ const ProductDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background">
-        <Navbar />
+      <Layout>
         <div className="flex items-center justify-center h-screen">
           <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
         </div>
-      </div>
+      </Layout>
     );
   }
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-background">
-        <Navbar />
+      <Layout>
         <div className="flex flex-col items-center justify-center h-screen gap-4">
           <p className="text-muted-foreground">Product not found</p>
-          <Link to="/" className="text-accent text-sm hover:underline">← Back to shop</Link>
+          <Link to="/shop" className="text-accent text-sm hover:underline">← Back to shop</Link>
         </div>
-      </div>
+      </Layout>
     );
   }
 
@@ -98,10 +107,9 @@ const ProductDetail = () => {
   const variant = getSelectedVariant();
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <div className="pt-24 pb-16 container mx-auto px-6">
-        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm mb-8">
+    <Layout>
+      <div className="pt-28 pb-16 container mx-auto px-6">
+        <Link to="/shop" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm mb-8">
           <ArrowLeft className="w-4 h-4" /> Back
         </Link>
 
@@ -138,7 +146,7 @@ const ProductDetail = () => {
 
           {/* Details */}
           <div className="flex flex-col justify-center">
-            <p className="font-body text-xs tracking-[0.5em] uppercase text-accent mb-2">BLACKOUT</p>
+            <p className="font-body text-xs tracking-[0.5em] uppercase text-accent mb-2">LEVN</p>
             <h1 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-foreground">
               {product.title}
             </h1>
@@ -195,8 +203,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

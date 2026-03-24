@@ -1,22 +1,17 @@
-import { Navbar } from "@/components/Navbar";
+import { Layout } from "@/components/Layout";
 import { HeroSection } from "@/components/HeroSection";
 import { ProductGrid } from "@/components/ProductGrid";
 import { CategoriesSection } from "@/components/CategoriesSection";
-import { AboutSection } from "@/components/AboutSection";
 import { CTASection } from "@/components/CTASection";
-import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <Layout>
       <HeroSection />
       <ProductGrid />
       <CategoriesSection />
-      <AboutSection />
       <CTASection />
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

@@ -15,9 +15,9 @@ export const Footer = () => {
           <div>
             <h4 className="font-display text-xs tracking-widest uppercase text-foreground mb-4">Shop</h4>
             <div className="flex flex-col gap-2">
-              <Link to="/#products" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">New Arrivals</Link>
-              <Link to="/#collections" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Collections</Link>
-              <Link to="/#products" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">All Products</Link>
+              <Link to="/shop" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">New Arrivals</Link>
+              <Link to="/collections" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Collections</Link>
+              <Link to="/shop" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">All Products</Link>
             </div>
           </div>
           <div>

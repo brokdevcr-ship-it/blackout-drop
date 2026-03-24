@@ -30,13 +30,13 @@ export const HeroSection = () => {
           </p>
           <div className="flex gap-4 fade-in-up fade-in-up-delay-3">
             <Link
-              to="/#products"
+              to="/shop"
               className="inline-flex items-center justify-center h-12 px-10 bg-foreground text-background font-display text-xs tracking-[0.3em] uppercase hover:bg-foreground/90 transition-all duration-300"
             >
               Shop Now
             </Link>
             <Link
-              to="/#collections"
+              to="/collections"
               className="inline-flex items-center justify-center h-12 px-10 border border-foreground/30 text-foreground font-display text-xs tracking-[0.3em] uppercase hover:border-foreground hover:bg-foreground/5 transition-all duration-300"
             >
               Explore

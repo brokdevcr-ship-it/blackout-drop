@@ -5,6 +5,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index.tsx";
+import Shop from "./pages/Shop.tsx";
+import Collections from "./pages/Collections.tsx";
+import About from "./pages/About.tsx";
+import Cart from "./pages/Cart.tsx";
 import ProductDetail from "./pages/ProductDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -16,6 +20,10 @@ const AppContent = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/collections" element={<Collections />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/product/:handle" element={<ProductDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
