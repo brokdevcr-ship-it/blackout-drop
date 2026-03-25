@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Minus, Plus, Trash2, ExternalLink, Loader2, ShoppingBag } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { useCartStore } from "@/stores/cartStore";
+import { onImgError } from "@/lib/imageUtils";
 
 const Cart = () => {
   const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } = useCartStore();
@@ -46,7 +47,7 @@ const Cart = () => {
                   <div key={item.variantId} className="flex gap-6 p-4 border border-border">
                     <div className="w-24 h-24 bg-secondary flex-shrink-0 overflow-hidden">
                       {image && (
-                        <img src={image.url} alt={item.product.node.title} className="w-full h-full object-cover" />
+                        <img src={image.url} alt={item.product.node.title} onError={onImgError} className="w-full h-full object-cover" />
                       )}
                     </div>
                     <div className="flex-1 min-w-0">

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { storefrontApiRequest, PRODUCT_BY_HANDLE_QUERY } from "@/lib/shopify";
-import { getMockProductByHandle } from "@/lib/mockProducts";
+import { getMockProductByHandle, MOCK_PRODUCTS } from "@/lib/mockProducts";
 import { useCartStore } from "@/stores/cartStore";
 import { Layout } from "@/components/Layout";
+import { ProductCard } from "@/components/ProductCard";
+import { onImgError } from "@/lib/imageUtils";
 import { Loader2, ArrowLeft, ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
 
@@ -106,6 +108,11 @@ const ProductDetail = () => {
   const images = product.images.edges;
   const variant = getSelectedVariant();
 
+  // Related products: up to 4 mock products, excluding the current one
+  const relatedProducts = MOCK_PRODUCTS
+    .filter((p) => p.node.handle !== product.handle)
+    .slice(0, 4);
+
   return (
     <Layout>
       <div className="pt-28 pb-16 container mx-auto px-6">
@@ -121,6 +128,7 @@ const ProductDetail = () => {
                 <img
                   src={images[selectedImage].node.url}
                   alt={images[selectedImage].node.altText || product.title}
+                  onError={onImgError}
                   className="w-full h-full object-cover"
                 />
               ) : (
@@ -137,7 +145,7 @@ const ProductDetail = () => {
                     onClick={() => setSelectedImage(i)}
                     className={`aspect-square bg-secondary overflow-hidden border-2 transition-colors ${i === selectedImage ? 'border-foreground' : 'border-transparent'}`}
                   >
-                    <img src={img.node.url} alt="" loading="lazy" className="w-full h-full object-cover" />
+                    <img src={img.node.url} alt="" loading="lazy" onError={onImgError} className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
@@ -203,6 +211,35 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+
+      {/* ── Related Products ──────────────────────────────────── */}
+      {relatedProducts.length > 0 && (
+        <section className="py-16 border-t border-border">
+          <div className="container mx-auto px-6">
+            <div className="flex items-end justify-between mb-10">
+              <div>
+                <p className="font-body text-[10px] tracking-[0.5em] uppercase text-accent mb-2">
+                  You May Also Like
+                </p>
+                <h2 className="font-display text-2xl md:text-3xl font-bold uppercase tracking-tight text-foreground">
+                  More From Drop 001
+                </h2>
+              </div>
+              <Link
+                to="/shop"
+                className="hidden md:block font-body text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+              >
+                View All →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6">
+              {relatedProducts.map((p, i) => (
+                <ProductCard key={p.node.id} product={p} priority={i === 0} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </Layout>
   );
 };

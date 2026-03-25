@@ -10,6 +10,8 @@ import Collections from "./pages/Collections.tsx";
 import About from "./pages/About.tsx";
 import Cart from "./pages/Cart.tsx";
 import ProductDetail from "./pages/ProductDetail.tsx";
+import Artists from "./pages/Artists.tsx";
+import ArtistDetail from "./pages/ArtistDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -25,6 +27,8 @@ const AppContent = () => {
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/product/:handle" element={<ProductDetail />} />
+        <Route path="/artists" element={<Artists />} />
+        <Route path="/artists/:slug" element={<ArtistDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

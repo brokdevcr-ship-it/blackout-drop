@@ -1,10 +1,11 @@
 import { ShopifyProduct } from "./shopify";
+import { unsplashUrl } from "./imageUtils";
 
 // ─── Image helper ─────────────────────────────────────────────────────────────
 // All images sourced from Unsplash — fashion/streetwear editorial photography.
 // Swap any `id` for a different Unsplash photo ID to update product imagery.
-const u = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?w=700&h=933&fit=crop&q=80&auto=format`;
+// unsplashUrl() adds the required ixlib param so Imgix CDN serves them reliably.
+const u = (id: string) => unsplashUrl(id);
 
 // ─── Product factory ──────────────────────────────────────────────────────────
 function product(

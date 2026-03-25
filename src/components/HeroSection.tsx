@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-model.jpg";
 import levnLogo from "@/assets/levn-logo.png";
+import { onImgError } from "@/lib/imageUtils";
 
 export const HeroSection = () => {
   return (
@@ -8,26 +9,41 @@ export const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="LEVN Collection campaign"
+          alt="LEVN Drop 001 campaign"
           width={1920}
           height={1080}
+          onError={onImgError}
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10" />
       </div>
 
       <div className="relative h-full flex flex-col justify-end pb-20 md:pb-32 container mx-auto px-6">
         <div className="max-w-2xl">
-          <img src={levnLogo} alt="LEVN" className="h-16 md:h-20 w-auto mb-6 fade-in-up" />
+          <img
+            src={levnLogo}
+            alt="LEVN"
+            className="h-16 md:h-20 w-auto mb-6 fade-in-up"
+          />
+
+          {/* Drop label */}
+          <p className="font-body text-[10px] tracking-[0.5em] uppercase text-accent mb-3 fade-in-up fade-in-up-delay-1">
+            Drop 001
+          </p>
+
           <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-black uppercase leading-[0.85] tracking-tight text-foreground fade-in-up fade-in-up-delay-1">
-            NEW<br />DROP
+            LEVN<br />DROP 001
           </h1>
-          <p className="font-display text-lg md:text-xl font-light tracking-[0.2em] uppercase text-muted-foreground mt-4 fade-in-up fade-in-up-delay-1">
-            LEVN Collection
+
+          <p className="font-body text-base md:text-lg font-light tracking-[0.15em] uppercase text-muted-foreground mt-5 fade-in-up fade-in-up-delay-1">
+            Oversized essentials. Limited pieces.
           </p>
-          <p className="font-body text-sm text-muted-foreground mt-4 mb-8 tracking-wide fade-in-up fade-in-up-delay-2">
-            Limited pieces available — Once they're gone, they're gone.
+
+          <p className="font-body text-sm text-muted-foreground/70 mt-3 mb-8 tracking-wide max-w-sm fade-in-up fade-in-up-delay-2">
+            Premium streetwear engineered for the next era.
+            Once it's gone, it's gone.
           </p>
+
           <div className="flex gap-4 fade-in-up fade-in-up-delay-3">
             <Link
               to="/shop"
